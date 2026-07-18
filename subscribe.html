@@ -2,41 +2,35 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تفعيل الاشتراك - YOUSSEF TV PRO</title>
     <style>
-        body { margin: 0; padding: 0; background-color: #fbc02d; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; color: white; }
+        body { margin: 0; background-color: #fbc02d; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; color: white; }
         .box { background: white; padding: 30px; border-radius: 15px; text-align: center; color: #fbc02d; width: 85%; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        h2 { margin-bottom: 15px; color: #fbc02d; }
-        .info-text { font-weight: bold; color: #555; margin-bottom: 5px; font-size: 15px; }
-        .vodafone-cash { font-size: 22px; font-weight: bold; color: #e91e63; margin-bottom: 20px; background: #fff3cc; padding: 10px; border-radius: 5px; border: 1px dashed #e91e63; }
-        input { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #fbc02d; border-radius: 5px; box-sizing: border-box; text-align: center; font-size: 16px; }
-        button { width: 100%; padding: 12px; background-color: #fbc02d; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 18px; margin-top: 10px; }
-        .back-btn { display: block; margin-top: 20px; color: #888; text-decoration: none; font-weight: bold; }
+        .vodafone-cash { font-size: 22px; font-weight: bold; color: #e91e63; margin: 20px 0; background: #fff3cc; padding: 10px; border-radius: 5px; border: 1px dashed #e91e63; }
+        input, button { width: 100%; padding: 12px; margin: 10px 0; border-radius: 5px; border: 2px solid #fbc02d; box-sizing: border-box; text-align: center; font-size: 16px; }
+        button { background-color: #fbc02d; color: white; font-weight: bold; cursor: pointer; }
+        a { display: block; margin-top: 15px; color: #888; text-decoration: none; }
     </style>
 </head>
 <body>
-
     <div class="box">
         <h2>تفعيل الاشتراك الشهري</h2>
-        
-        <div class="info-text">تواصل معنا لكي تحصل على الكود:</div>
+        <div>تواصل معنا للحصول على الكود:</div>
         <div class="vodafone-cash">01041328156</div>
-        
-        <input type="text" id="activationCode" placeholder="أدخل كود التفعيل هنا">
+        <input type="text" id="activationCode" placeholder="أدخل كود التفعيل">
         <button onclick="checkCode()">تفعيل الآن</button>
-        
-        <a href="index.html" class="back-btn">العودة للرئيسية</a>
+        <a href="index.html">العودة للرئيسية</a>
     </div>
 
     <script src="codes.js"></script>
     <script>
         function checkCode() {
             let code = document.getElementById("activationCode").value;
-            // التحقق من وجود الكود في ملف codes.js
             if (validCodes.includes(code)) {
                 localStorage.setItem("isSubscribed", "true");
-                alert("تم التفعيل بنجاح! استمتع بالمشاهدة.");
+                localStorage.setItem("subDate", new Date().getTime()); // حفظ وقت التفعيل بالملي ثانية
+                alert("تم التفعيل بنجاح لمدة 30 يوم!");
                 window.location.href = "index.html";
             } else {
                 alert("الكود غير صحيح أو مستخدم من قبل!");
