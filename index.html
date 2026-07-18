@@ -2,89 +2,82 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta YOUSSEF TV PRO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>YOUSSEF TV PRO</title>
     <style>
         body { margin: 0; padding: 0; background-color: #fbc02d; font-family: sans-serif; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
         
-        /* الشاشة الترحيبية */
         #splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #fbc02d; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 2000; }
         .logo-circle { width: 200px; height: 200px; background-color: #fbc02d; border: 5px solid white; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; font-size: 24px; text-align: center; }
         
-        /* الهيدر الثابت */
         .header { background: #fbc02d; padding: 15px; border-bottom: 2px solid #e6b800; display: flex; align-items: center; justify-content: space-between; color: white; font-weight: bold; font-size: 20px; flex-shrink: 0; }
         
-        /* منطقة الأزرار */
         .btn-container { flex: 1; padding: 10px; overflow-y: auto; }
         .btn { display: block; background: white; color: #fbc02d; padding: 15px; margin-bottom: 8px; text-align: center; font-weight: bold; border-radius: 5px; text-decoration: none; border: 2px solid #fff; }
-  x; text-align: center; font-weight: bold; border-radius: 5px; text-decoration: none; border: 2px solid #fff; }
         
-        /* الفوتر الثابت */
         .footer { background: #fbc02d; display: flex; border-top: 2px solid #e6b800; flex-shrink: 0; }
         .footer a { flex: 1; text-align: center; padding: 15px; text-decoration: none; color: white; font-weight: bold; }
         .active-tab { background: #e6b800; }
         
-        /* القائمة الجانبية */
         .sidebar { height: 100%; width: 0; position: fixed; z-index: 10; top: 0; right: 0; background-color: #fff; overflow-x: hidden; transition: 0.3s; padding-top: 60px; box-shadow: -2px 0 5px rgba(0,0,0,0.2); }
         .sidebar a { padding: 15px; display: block; color: #fbc02d; font-weight: bold; text-decoration: none; border-bottom: 1px solid #eee; }
     </style>
 </head>
 <body>
 
-    <!-- الشاشة الترحيبية -->
     <div id="splash-screen">
         <div class="logo-circle">YOUSSEF<br>TV PRO</div>
         <div style="margin-top: 20px; color: white; font-weight: bold;">جاري التحميل...</div>
     </div>
 
-    <!-- الهيدر -->
     <div class="header">
         <div onclick="openNav()">☰</div>
         <div>YOUSSEF TV PRO</div>
         <div onclick="location.reload()">🔄</div>
     </div>
 
-    <!-- القائمة الجانبية -->
     <div class="sidebar" id="mySidebar">
         <a href="javascript:void(0)" onclick="closeNav()">إغلاق &times;</a>
         <a href="subscribe.html">الاشتراك</a>
     </div>
-<!-- منطقة الأزرار المعدلة بالحماية -->
-<div class="btn-container">
-    <a href="#" class="btn" onclick="checkSubscription(event, 'bein_max.html')">beIN SPORTS MAX</a>
-    <a href="#" class="btn" onclick="checkSubscription(event, 'bein_1080.html')">beIN SPORTS (1080P)</a>
-    <a href="#" class="btn" onclick="checkSubscription(event, 'bein_720.html')">beIN SPORTS (720P)</a>
-    <a href="#" class="btn" onclick="checkSubscription(event, 'bein_360.html')">beIN SPORTS (360P)</a>
-    <a href="#" class="btn" onclick="checkSubscription(event, 'bein_244.html')">beIN SPORTS (244P)</a>
-    <a href="#" class="btn" onclick="checkSubscription(event, 'bein_ent.html')">beIN ENTERTAINMENT</a>
-    <a href="#" class="btn" onclick="checkSubscription(event, 'arabic.html')">ARABIC CHANNELS</a>
-    <a href="#" class="btn" onclick="checkSubscription(event, 'mbc.html')">MBC CHANNELS</a>
-    <a href="#" class="btn" onclick="checkSubscription(event, 'france.html')">FRANCE CHANNELS</a>
-    <a href="#" class="btn" onclick="checkSubscription(event, 'turkish.html')">TURKISH CHANNELS</a>
-    <a href="#" class="btn" onclick="checkSubscription(event, 'kids.html')">KIDS CHANNELS</a>
-    <a href="#" class="btn" onclick="checkSubscription(event, 'weyyak.html')">WEYYAK</a>
-    <a href="#" class="btn" onclick="checkSubscription(event, 'shahid.html')">SHAHID VIP</a>
-</div>
 
-        <!-- الفوتر الثابت -->
+    <div class="btn-container">
+        <a href="#" class="btn" onclick="checkSubscription(event, 'bein_max.html')">beIN SPORTS MAX</a>
+        <a href="#" class="btn" onclick="checkSubscription(event, 'bein_1080.html')">beIN SPORTS (1080P)</a>
+        <a href="#" class="btn" onclick="checkSubscription(event, 'bein_720.html')">beIN SPORTS (720P)</a>
+        <a href="#" class="btn" onclick="checkSubscription(event, 'bein_360.html')">beIN SPORTS (360P)</a>
+        <a href="#" class="btn" onclick="checkSubscription(event, 'bein_244.html')">beIN SPORTS (244P)</a>
+        <a href="#" class="btn" onclick="checkSubscription(event, 'bein_ent.html')">beIN ENTERTAINMENT</a>
+        <a href="#" class="btn" onclick="checkSubscription(event, 'arabic.html')">ARABIC CHANNELS</a>
+        <a href="#" class="btn" onclick="checkSubscription(event, 'mbc.html')">MBC CHANNELS</a>
+        <a href="#" class="btn" onclick="checkSubscription(event, 'france.html')">FRANCE CHANNELS</a>
+        <a href="#" class="btn" onclick="checkSubscription(event, 'turkish.html')">TURKISH CHANNELS</a>
+        <a href="#" class="btn" onclick="checkSubscription(event, 'kids.html')">KIDS CHANNELS</a>
+        <a href="#" class="btn" onclick="checkSubscription(event, 'weyyak.html')">WEYYAK</a>
+        <a href="#" class="btn" onclick="checkSubscription(event, 'shahid.html')">SHAHID VIP</a>
+    </div>
+
     <div class="footer">
         <a href="index.html" class="active-tab">LIVE TV</a>
-        <a href="live_event.html">LIVE EVENT</a>n() {
-        if (sessionStorage.getItem("splashShown")) {
-            // إذا كانت ظهرت، نخفيها فوراً
-            document.getElementById('splash-screen').style.display = 'none';
-        } else {
-            // إذا لم تظهر، ننتظر 5 ثواني ثم نخفيها ونحفظ أنها ظهرت
-            setTimeout(function() {
+        <a href="live_event.html">LIVE EVENT</a>
+    </div>
+
+    <!-- ملف السكريبت الخاص بالحماية -->
+    <script src="script.js"></script>
+
+    <script>
+        window.onload = function() {
+            if (sessionStorage.getItem("splashShown")) {
                 document.getElementById('splash-screen').style.display = 'none';
-                sessionStorage.setItem("splashShown", "true");
-            }, 5000);
-        }
-    };
-
-    function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
-    function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
-</script>
-<script src="script.js"></script>
-
+            } else {
+                setTimeout(function() {
+                    document.getElementById('splash-screen').style.display = 'none';
+                    sessionStorage.setItem("splashShown", "true");
+                }, 5000);
+            }
+        };
+        function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
+        function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+    </script>
 </body>
 </html>
