@@ -6,25 +6,29 @@
     <title>تفعيل الاشتراك - YOUSSEF TV PRO</title>
     <style>
         body { margin: 0; padding: 0; background-color: #fbc02d; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; color: white; }
-        .box { background: white; padding: 30px; border-radius: 15px; text-align: center; color: #fbc02d; width: 80%; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        h2 { margin-bottom: 20px; }
+        .box { background: white; padding: 30px; border-radius: 15px; text-align: center; color: #fbc02d; width: 85%; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        h2 { margin-bottom: 15px; color: #fbc02d; }
+        .info-text { font-weight: bold; color: #555; margin-bottom: 5px; font-size: 15px; }
+        .vodafone-cash { font-size: 22px; font-weight: bold; color: #e91e63; margin-bottom: 20px; background: #fff3cc; padding: 10px; border-radius: 5px; border: 1px dashed #e91e63; }
         input { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #fbc02d; border-radius: 5px; box-sizing: border-box; text-align: center; font-size: 16px; }
-        button { width: 100%; padding: 12px; background-color: #fbc02d; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 18px; }
-        .back-btn { margin-top: 20px; color: white; text-decoration: none; font-weight: bold; }
+        button { width: 100%; padding: 12px; background-color: #fbc02d; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 18px; margin-top: 10px; }
+        .back-btn { display: block; margin-top: 20px; color: #888; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <div class="box">
         <h2>تفعيل الاشتراك الشهري</h2>
-        <p>الاشتراك الشهري: 500 جنيه</p>
-        <p>فودافون كاش: 010xxxxxxxx</p>
-        <input type="text" id="activationCode" placeholder="أدخل كود التفعيل المكون من 8 أرقام">
+        
+        <div class="info-text">تواصل معنا لكي تحصل على الكود:</div>
+        <div class="vodafone-cash">01041328156</div>
+        
+        <input type="text" id="activationCode" placeholder="أدخل كود التفعيل هنا">
         <button onclick="checkCode()">تفعيل الآن</button>
+        
         <a href="index.html" class="back-btn">العودة للرئيسية</a>
     </div>
 
-    <!-- هنا سنربط ملف الأكواد لاحقاً -->
     <script src="codes.js"></script>
     <script>
         function checkCode() {
@@ -32,10 +36,10 @@
             // التحقق من وجود الكود في ملف codes.js
             if (validCodes.includes(code)) {
                 localStorage.setItem("isSubscribed", "true");
-                alert("تم التفعيل بنجاح! مبروك يا بطل.");
+                alert("تم التفعيل بنجاح! استمتع بالمشاهدة.");
                 window.location.href = "index.html";
             } else {
-                alert("كود خاطئ أو مستخدم من قبل!");
+                alert("الكود غير صحيح أو مستخدم من قبل!");
             }
         }
     </script>
