@@ -5,27 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YOUSSEF TV PRO</title>
     <style>
-        body { background-color: #fbc02d; font-family: sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh; }
-        
-        /* الهيدر */
+        body { margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh; background-color: #fbc02d; font-family: sans-serif; overflow: hidden; }
         .header { background: #fbc02d; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e6b800; color: white; font-weight: bold; }
-        
-        /* منطقة الأزرار - ثابتة وبنفس الحجم */
+        .search-container { padding: 10px; background: #fbc02d; }
+        .search-input { width: 100%; padding: 12px; border-radius: 5px; border: none; box-sizing: border-box; }
         .btn-container { flex: 1; padding: 10px; overflow-y: auto; }
-        .btn { display: block; background: white; color: #fbc02d; padding: 16px; margin-bottom: 10px; text-align: center; font-weight: bold; font-size: 16px; border-radius: 4px; text-decoration: none; border: none; box-shadow: 0 2px 3px rgba(0,0,0,0.2); }
-        
-        /* الشريط السفلي - أزرار تنقل */
-        .footer { background: #fbc02d; display: flex; border-top: 2px solid #e6b800; }
-        .footer a { flex: 1; text-align: center; padding: 15px; text-decoration: none; color: white; font-weight: bold; font-size: 14px; }
-        .footer a.active { background: #e6b800; } /* الزر المختار */
+        .btn { display: block; background: white; color: #fbc02d; padding: 15px; margin-bottom: 10px; text-align: center; font-weight: bold; border-radius: 5px; text-decoration: none; border: 2px solid #fff; }
+        .footer { background: #fbc02d; display: flex; border-top: 2px solid #e6b800; padding: 5px; }
+        .footer a { flex: 1; text-align: center; padding: 12px; text-decoration: none; color: white; font-weight: bold; font-size: 14px; }
     </style>
 </head>
 <body>
 
     <div class="header">
         <span>☰</span>
-        <span>Youssef TV</span>
+        <span>YOUSSEF TV PRO</span>
         <span>🔍</span>
+    </div>
+
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="البحث...">
     </div>
 
     <div class="btn-container">
@@ -45,7 +44,7 @@
     </div>
 
     <div class="footer">
-        <a href="index.html" class="active">LIVE TV</a>
+        <a href="index.html">LIVE TV</a>
         <a href="live_event.html">LIVE EVENT</a>
     </div>
 
