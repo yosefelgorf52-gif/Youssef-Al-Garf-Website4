@@ -5,29 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YOUSSEF TV PRO</title>
     <style>
-        /* تصميم ثابت لا يتحرك */
         body { margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh; background-color: #fbc02d; font-family: sans-serif; overflow: hidden; }
         
-        /* الهيدر مع البحث */
-        .header { background: #fbc02d; padding: 10px; border-bottom: 2px solid #e6b800; color: white; text-align: center; font-weight: bold; font-size: 20px; }
-        .search-input { width: 95%; padding: 10px; margin: 10px auto; border-radius: 5px; border: none; display: block; }
+        /* الهيدر والقائمة */
+        .header { background: #fbc02d; padding: 10px; border-bottom: 2px solid #e6b800; display: flex; align-items: center; justify-content: space-between; color: white; }
+        .menu-btn { font-size: 25px; cursor: pointer; }
+        .search-input { width: 70%; padding: 8px; border-radius: 5px; border: none; }
         
-        /* الأزرار في المنتصف */
+        /* القائمة الجانبية */
+        .sidebar { height: 100%; width: 0; position: fixed; z-index: 10; top: 0; right: 0; background-color: #fff; overflow-x: hidden; transition: 0.3s; padding-top: 60px; box-shadow: -2px 0 5px rgba(0,0,0,0.2); }
+        .sidebar a { padding: 15px; display: block; color: #fbc02d; font-weight: bold; text-decoration: none; border-bottom: 1px solid #eee; }
+        
+        /* منطقة الأزرار */
         .btn-container { flex: 1; padding: 10px; overflow-y: auto; }
         .btn { display: block; background: white; color: #fbc02d; padding: 15px; margin-bottom: 8px; text-align: center; font-weight: bold; border-radius: 5px; text-decoration: none; border: 2px solid #fff; }
         
-        /* الفوتر الثابت (Live TV / Live Event) */
+        /* الفوتر الثابت */
         .footer { background: #fbc02d; display: flex; border-top: 2px solid #e6b800; }
         .footer a { flex: 1; text-align: center; padding: 15px; text-decoration: none; color: white; font-weight: bold; }
+        .active-tab { background: #e6b800; }
     </style>
 </head>
 <body>
 
+    <!-- الهيدر والبحث -->
     <div class="header">
-        <div>YOUSSEF TV PRO</div>
+        <div class="menu-btn" onclick="openNav()">☰</div>
         <input type="text" class="search-input" placeholder="البحث...">
     </div>
 
+    <!-- القائمة الجانبية -->
+    <div class="sidebar" id="mySidebar">
+        <a href="javascript:void(0)" onclick="closeNav()">إغلاق &times;</a>
+        <a href="subscribe.html">الاشتراك</a>
+    </div>
+
+    <!-- الأزرار -->
     <div class="btn-container">
         <a href="bein_max.html" class="btn">beIN SPORTS MAX</a>
         <a href="bein_1080.html" class="btn">beIN SPORTS (1080P)</a>
@@ -44,10 +57,15 @@
         <a href="shahid.html" class="btn">SHAHID VIP</a>
     </div>
 
+    <!-- الفوتر -->
     <div class="footer">
-        <a href="index.html" style="background:#e6b800;">LIVE TV</a>
+        <a href="index.html" class="active-tab">LIVE TV</a>
         <a href="live_event.html">LIVE EVENT</a>
     </div>
 
+    <script>
+        function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
+        function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+    </script>
 </body>
 </html>
