@@ -81,5 +81,24 @@
         function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
         function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
     </script>
+    <script>
+    // عند تحميل الصفحة، نتحقق هل ظهرت الشاشة من قبل؟
+    window.onload = function() {
+        if (sessionStorage.getItem("splashShown")) {
+            // إذا كانت ظهرت، نخفيها فوراً
+            document.getElementById('splash-screen').style.display = 'none';
+        } else {
+            // إذا لم تظهر، ننتظر 5 ثواني ثم نخفيها ونحفظ أنها ظهرت
+            setTimeout(function() {
+                document.getElementById('splash-screen').style.display = 'none';
+                sessionStorage.setItem("splashShown", "true");
+            }, 5000);
+        }
+    };
+
+    function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
+    function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+</script>
+
 </body>
 </html>
