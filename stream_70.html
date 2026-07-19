@@ -2,16 +2,25 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Loading...</title>
     <style>
-        body { margin: 0; background: #000; color: white; display: flex; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif; }
+        body { 
+            margin: 0; 
+            background-color: #000; 
+            color: #fff; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            font-family: sans-serif;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
-    <h1>Loading, Please wait...</h1>
+    <div>Loading, Please wait...</div>
 
     <script>
-        // التحويل بعد ثانيتين (2000 ميللي ثانية) إلى صفحة البث الفعلية
+        // التحويل بعد ثانيتين
         setTimeout(function() {
             window.location.href = "player_live.html"; 
         }, 2000);
