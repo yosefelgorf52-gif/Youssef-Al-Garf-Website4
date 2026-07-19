@@ -3,49 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تفعيل الاشتراك - YOUSSEF TV PRO</title>
+    <title>إدارة الاشتراك - YOUSSEF TV PRO</title>
     <style>
         body { margin: 0; background-color: #fbc02d; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; color: white; }
         .box { background: white; padding: 30px; border-radius: 15px; text-align: center; color: #fbc02d; width: 85%; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .vodafone-cash { font-size: 22px; font-weight: bold; color: #e91e63; margin: 20px 0; background: #fff3cc; padding: 10px; border-radius: 5px; border: 1px dashed #e91e63; }
+        .vodafone-cash { font-size: 20px; font-weight: bold; color: #e91e63; margin: 15px 0; background: #fff3cc; padding: 10px; border-radius: 5px; }
         input, button { width: 100%; padding: 12px; margin: 10px 0; border-radius: 5px; border: 2px solid #fbc02d; box-sizing: border-box; text-align: center; font-size: 16px; }
         button { background-color: #fbc02d; color: white; font-weight: bold; cursor: pointer; }
-        #success-screen { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#fbc02d; z-index:3000; flex-direction:column; justify-content:center; align-items:center; color:white; }
+        #status-area { display: none; } /* يظهر فقط عند التفعيل */
     </style>
 </head>
 <body>
     <div class="box">
-        <h2>تفعيل الاشتراك الشهري</h2>
-        <div>تواصل معنا للحصول على الكود:</div>
-        <div class="vodafone-cash">01041328156</div>
-        <input type="text" id="activationCode" placeholder="أدخل كود التفعيل">
-        <button onclick="checkCode()">تفعيل الآن</button>
-        <a href="index.html" style="display:block; margin-top:15px; color:#888;">العودة للرئيسية</a>
-    </div>
+        <!-- منطقة إدخال الكود -->
+        <div id="input-area">
+            <h2>تفعيل الاشتراك</h2>
+            <div class="vodafone-cash">01041328156</div>
+            <input type="text" id="activationCode" placeholder="أدخل كود التفعيل">
+            <button onclick="checkCode()">تفعيل الآن</button>
+        </div>
 
-    <div id="success-screen">
-        <div style="font-size: 80px;">🎉</div>
-        <h1>تم التفعيل بنجاح!</h1>
-        <p>أهلاً بك في YOUSSEF TV PRO</p>
+        <!-- منطقة العداد (تظهر للمشترك فقط) -->
+        <div id="status-area">
+            <h2>حالة اشتراكك</h2>
+            <div id="timer-display" style="font-size: 24px; font-weight: bold; color: #fbc02d; margin: 20px 0;"></div>
+            <p>شكراً لاشتراكك في YOUSSEF TV PRO</p>
+        </div>
+        
+        <a href="index.html" style="display:block; margin-top:20px; color:#888;">العودة للرئيسية</a>
     </div>
 
     <script src="codes.js"></script>
     <script>
         function checkCode() {
             let code = document.getElementById("activationCode").value;
-            // التحقق من أن الكود موجود في ملف codes.js
             if (typeof validCodes !== 'undefined' && validCodes.includes(code)) {
-                // حفظ الكود وتاريخ التفعيل
-                localStorage.setItem("userCode", code); 
+                localStorage.setItem("userCode", code);
                 localStorage.setItem("subDate", new Date().getTime());
-                
-                // إظهار الشاشة الترحيبية
-                document.getElementById("success-screen").style.display = "flex";
-                setTimeout(() => { window.location.href = "index.html"; }, 3000);
+                location.reload(); // إعادة تحميل الصفحة ليظهر العداد
             } else {
                 alert("الكود غير صحيح!");
             }
         }
+
+        // عند فتح الصفحة، نتحقق هل هو مشترك أم لا
+        window.onload = function() {
+            let userCode = localStorage.getItem("userCode");
+            let subDate = localStorage.getItem("subDate");
+
+            if (userCode && subDate) {
+                document.getElementById("input-area").style.display = "none";
+                document.getElementById("status-area").style.display = "block";
+                
+                let now = new Date().getTime();
+                let passed = now - parseInt(subDate);
+                let remaining = Math.max(0, 30 - Math.floor(passed / (24 * 60 * 60 * 1000)));
+                document.getElementById("timer-display").innerHTML = "باقي من اشتراكك: " + remaining + " يوم";
+            }
+        };
     </script>
 </body>
 </html>
