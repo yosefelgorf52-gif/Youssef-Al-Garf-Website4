@@ -11,50 +11,37 @@
             width: 100vh; height: 100vw; position: absolute; top: -100vw; left: 0;
         }
         .player-container { width: 100%; height: 100%; }
-        /* التحكم في إظهار وإخفاء القوائم */
-        .plyr__controls { transition: opacity 0.3s ease; }
+        .plyr { height: 100%; width: 100%; }
+        /* إخفاء التحكم */
         .plyr--hide-controls .plyr__controls { opacity: 0; }
     </style>
 </head>
 <body>
-
-<div class="landscape-wrapper">
-    <div class="player-container">
-        <video id="player" playsinline controls>
-            <source src="رابط_البث_هنا.m3u8" type="application/x-mpegURL">
-        </video>
+    <div class="landscape-wrapper">
+        <div class="player-container">
+            <video id="player" playsinline controls>
+                <source src="رابط_البث_هنا.m3u8" type="application/x-mpegURL">
+            </video>
+        </div>
     </div>
-</div>
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script>
+        const player = new Plyr('#player', {
+            controls: ['play', 'progress', 'current-time', 'settings', 'fullscreen'],
+            settings: ['quality'],
+            quality: { default: 1080, options: [1080, 720, 480, 360] }
+        });
 
-<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-<script>
-    const player = new Plyr('#player', {
-        controls: ['play', 'progress', 'current-time', 'settings', 'fullscreen'],
-        settings: ['quality'],
-        quality: { default: 1080, options: [1080, 720, 480, 360] }
-    });
-
-    // منطق الإخفاء التلقائي بعد ثانيتين (2000 مللي ثانية)
-    let hideTimer;
-    const playerContainer = document.querySelector('.player-container');
-
-    function showControls() {
-        clearTimeout(hideTimer);
-        playerContainer.classList.remove('plyr--hide-controls');
-        // إخفاء تلقائي بعد 2000 مللي ثانية
-        hideTimer = setTimeout(() => {
-            playerContainer.classList.add('plyr--hide-controls');
-        }, 2000);
-    }
-
-    // إظهار عند اللمس
-    playerContainer.addEventListener('touchstart', showControls);
-    playerContainer.addEventListener('mousemove', showControls);
-    
-    // تشغيل الإخفاء الأولي
-    showControls();
-</script>
-
+        // منطق الإظهار والإخفاء التلقائي
+        let timer;
+        const container = document.querySelector('.player-container');
+        function resetTimer() {
+            container.classList.remove('plyr--hide-controls');
+            clearTimeout(timer);
+            timer = setTimeout(() => { container.classList.add('plyr--hide-controls'); }, 2000);
+        }
+        container.addEventListener('touchstart', resetTimer);
+        resetTimer();
+    </script>
 </body>
 </html>
-
