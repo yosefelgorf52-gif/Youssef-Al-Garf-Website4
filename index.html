@@ -36,11 +36,6 @@
         <div onclick="location.reload()">🔄</div>
     </div>
 
-    <!-- مكان العداد -->
-    <div id="countdown-timer" style="background:#fff3cc; color:#fbc02d; text-align:center; padding:10px; font-weight:bold; font-size:16px; border-bottom: 2px solid #e6b800;">
-        جاري التحقق من الاشتراك...
-    </div>
-
     <div class="sidebar" id="mySidebar">
         <a href="javascript:void(0)" onclick="closeNav()">إغلاق &times;</a>
         <a href="subscribe.html">الاشتراك</a>
@@ -71,22 +66,6 @@
     <script src="codes.js"></script>
 
     <script>
-        // العداد التنازلي المحدث
-        function updateTimer() {
-            let subDate = localStorage.getItem("subDate");
-            let timerDiv = document.getElementById("countdown-timer");
-            if (subDate) {
-                let now = new Date().getTime();
-                let passed = now - parseInt(subDate);
-                let total = 30 * 24 * 60 * 60 * 1000;
-                let remaining = Math.max(0, Math.ceil((total - passed) / (24 * 60 * 60 * 1000)));
-                timerDiv.innerHTML = "باقي من اشتراكك: " + remaining + " يوم";
-            } else {
-                timerDiv.innerHTML = "غير مشترك - يرجى التفعيل";
-            }
-        }
-        updateTimer();
-
         window.onload = function() {
             if (sessionStorage.getItem("splashShown")) {
                 document.getElementById('splash-screen').style.display = 'none';
