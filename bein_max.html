@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>beIN SPORTS MAX</title>
+    <style>
+        /* تثبيت الشاشة ومنع الحركة */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background-color: #fbc02d; 
+            font-family: sans-serif; 
+            overflow: hidden; 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        
+        /* الهيدر مطابق للهيدر الأساسي */
+        .header { 
+            background: #fbc02d; 
+            padding: 15px; 
+            border-bottom: 2px solid #e6b800; 
+            display: flex; 
+            align-items: center; 
+            color: white; 
+            font-weight: bold; 
+            font-size: 20px; 
+            flex-shrink: 0;
+        }
+        
+        .back-btn { margin-left: 15px; cursor: pointer; font-size: 24px; }
+        
+        /* حاوية الأزرار */
+        .btn-container { 
+            flex: 1; 
+            padding: 20px; 
+            overflow-y: auto; 
+        }
+        
+        /* تصميم الأزرار بنفس شكل الأزرار في الرئيسية */
+        .btn { 
+            display: block; 
+            background: white; 
+            color: #fbc02d; 
+            padding: 18px; 
+            margin-bottom: 12px; 
+            text-align: center; 
+            font-weight: bold; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            border: 2px solid #fff; 
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="back-btn" onclick="history.back()">&#8592;</div>
+        <div>beIN SPORTS MAX</div>
+    </div>
+
+    <div class="btn-container">
+        <a href="player_max_1080.html" class="btn">beIN MAX (1080P)</a>
+        <a href="player_max_720.html" class="btn">beIN MAX (720P)</a>
+        <a href="player_max_360.html" class="btn">beIN MAX (360P)</a>
+        <a href="player_max_244.html" class="btn">beIN MAX (244P)</a>
+    </div>
+
+</body>
+</html>
