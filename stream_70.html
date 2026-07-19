@@ -2,28 +2,23 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body { 
-            margin: 0; 
-            background-color: #000; 
-            color: #fff; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            height: 100vh; 
-            font-family: sans-serif;
-            font-size: 20px;
+            margin: 0; background-color: #000; color: #fff; 
+            display: flex; align-items: center; justify-content: center; 
+            height: 100vh; font-family: sans-serif;
+            /* قلب الصفحة للعرض */
+            transform: rotate(90deg); transform-origin: bottom left;
+            width: 100vh; height: 100vw; position: absolute; top: -100vw; left: 0;
         }
+        div { font-size: 3em; font-weight: bold; }
     </style>
 </head>
 <body>
     <div>Loading, Please wait...</div>
-
     <script>
-        // التحويل بعد ثانيتين
-        setTimeout(function() {
-            window.location.href = "player_live.html"; 
-        }, 2000);
+        setTimeout(function() { window.location.href = "player_live.html"; }, 2000);
     </script>
 </body>
 </html>
