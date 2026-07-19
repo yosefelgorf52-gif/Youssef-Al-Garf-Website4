@@ -4,43 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>beIN SPORTS MAX</title>
-    <!-- مكتبة مشغل الفيديو Plyr (تعطيك جودة عالية وتحكم كامل) -->
+    <!-- مكتبة Plyr المتكاملة -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <style>
-        body { margin: 0; background: #000; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        /* كود قلب المحتوى للعرض (Landscape) */
+        body, html { 
+            margin: 0; padding: 0; 
+            width: 100vw; height: 100vh; 
+            overflow: hidden; 
+            background: #000;
+        }
+
+        .landscape-wrapper {
+            transform: rotate(90deg);
+            transform-origin: bottom left;
+            width: 100vh;
+            height: 100vw;
+            position: absolute;
+            top: -100vw;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .player-container { width: 100%; height: 100%; }
-        video { width: 100%; height: 100%; }
+        .plyr { height: 100%; width: 100%; }
     </style>
 </head>
 <body>
 
-<div class="player-container">
-    <video id="player" playsinline controls>
-        <source src="رابط_البث_المباشر_هنا.m3u8" type="application/x-mpegURL">
-    </video>
+<div class="landscape-wrapper">
+    <div class="player-container">
+        <!-- مشغل الفيديو -->
+        <video id="player" playsinline controls>
+            <!-- هنا ستضع رابط البث لاحقاً -->
+            <source src="" type="application/x-mpegURL">
+        </video>
+    </div>
 </div>
 
 <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
 <script>
-    // تفعيل المشغل
-    const player = new Plyr('#player');
-
-    // كود إجبار الشاشة على العرض (Landscape) بمجرد فتح الصفحة
-    function lockOrientation() {
-        if (screen.orientation && screen.orientation.lock) {
-            screen.orientation.lock('landscape').catch(() => {});
-        }
-    }
-    
-    // تشغيل القفل عند التحميل
-    window.onload = lockOrientation;
-    
-    // العودة للوضع الأصلي عند الرجوع
-    window.onbeforeunload = () => {
-        if (screen.orientation && screen.orientation.unlock) {
-            screen.orientation.unlock();
-        }
-    };
+    // تفعيل المشغل مع خيارات الجودة
+    const player = new Plyr('#player', {
+        controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'settings', 'fullscreen'],
+        settings: ['quality', 'speed'],
+        quality: { default: 1080, options: [1080, 720, 480, 360] }
+    });
 </script>
 
 </body>
