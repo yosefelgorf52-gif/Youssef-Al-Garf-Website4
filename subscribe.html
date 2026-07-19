@@ -33,13 +33,17 @@
     <script>
         function checkCode() {
             let code = document.getElementById("activationCode").value;
-            if (validCodes.includes(code)) {
-                localStorage.setItem("isSubscribed", "true");
+            // التحقق من أن الكود موجود في ملف codes.js
+            if (typeof validCodes !== 'undefined' && validCodes.includes(code)) {
+                // حفظ الكود وتاريخ التفعيل
+                localStorage.setItem("userCode", code); 
                 localStorage.setItem("subDate", new Date().getTime());
+                
+                // إظهار الشاشة الترحيبية
                 document.getElementById("success-screen").style.display = "flex";
                 setTimeout(() => { window.location.href = "index.html"; }, 3000);
             } else {
-                alert("الكود غير صحيح أو مستخدم من قبل!");
+                alert("الكود غير صحيح!");
             }
         }
     </script>
